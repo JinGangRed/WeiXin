@@ -48,4 +48,14 @@ namespace WeiXin.Models
         public string scope;//用户授权的作用域，使用逗号（,）分隔
 
     }
+
+    /// <summary>
+    /// 简单的响应
+    /// </summary>
+    public class SimpleResponseModel
+    {
+        public int errcode;//错误代码，若为0则表示成功
+        public string errmsg;//错误信息
+        
+}
 }

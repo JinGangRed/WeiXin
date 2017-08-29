@@ -12,7 +12,7 @@ namespace WeiXin
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapMvcAttributeRoutes();//开启特征路由
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

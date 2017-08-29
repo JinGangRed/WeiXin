@@ -40,7 +40,6 @@ namespace WeiXin.Hepler.WeChatHelper
             }
             return token;
         }
-
         /// <summary>
         /// 网页授权获得Access_Token,可以同时获得OpenID和Access_token
         /// </summary>
@@ -91,10 +90,36 @@ namespace WeiXin.Hepler.WeChatHelper
             return token;
         }
 
-        #region 自定义菜单(已完成:)
 
 
 
+        #region 自定义菜单(已完成接口:创建菜单)
+        /// <summary>
+        /// 创建自定义菜单
+        /// </summary>
+        /// <param name="jsonData"></param>
+        /// <returns></returns>
+        public static string CreateMenu(string jsonData)
+        {
+            string create_url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/create?access_token={0}",
+                GetAccessToken());
+            var result = http.GetRequestResponseObject<SimpleResponseModel>(create_url, jsonData, "POST");
+            if (result != null)
+            {
+                if (result.errcode == 0)
+                {
+                    return "OK";
+                }
+                else
+                {
+                    return result.errmsg;
+                }
+            }
+            else
+            {
+                return "响应出现问题";
+            }
+        }
         #endregion
 
 

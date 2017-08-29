@@ -36,7 +36,7 @@ namespace WeiXin.App_Start
 
         public static void Initialize()
         {
-            ConnectionString = ConfigurationManager.ConnectionStrings["ProjectDBConnection"].ConnectionString;
+            //ConnectionString = ConfigurationManager.ConnectionStrings["ProjectDBConnection"].ConnectionString;
             WechatAppID = ConfigurationManager.AppSettings["WechatAppID"];
             WechatSecret = ConfigurationManager.AppSettings["WechatSecret"];
             Environment = ConfigurationManager.AppSettings["Environment"];
