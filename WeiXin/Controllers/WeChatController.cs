@@ -10,20 +10,26 @@ namespace WeiXin.Controllers
     public class WeChatController : Controller
     {
         // GET: WeChat
-        [Route("menu/create")]
-        public ActionResult Index(string menuName)
+        //http://localhost:8080/wechat/index?menuName=asaj
+        //[Route("menu/create")]
+        public string Index(string menuName,string url)
         {
             string menu_data = "{" +
                 "\"button\":[" +
                     "{" +
                         "\"type\":" +"\"view\"," +//click事件
                         "\"name\":" +"\""+menuName+"\","+
-                        "\"url\":"+"\"https://www.baidu.com\"" +
+                        "\"url\":"+"\""+url+"\"" +
                     "}" +
                   "]" +
                   "}";
-            WeChatHelper.CreateMenu(menu_data);
-            return View();
+            return WeChatHelper.CreateMenu(menu_data);
         }
+
+        public string Delete()
+        {
+            return WeChatHelper.DeleteMenu();
+        }
+
     }
 }

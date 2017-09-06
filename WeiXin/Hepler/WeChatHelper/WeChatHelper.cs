@@ -93,7 +93,7 @@ namespace WeiXin.Hepler.WeChatHelper
 
 
 
-        #region 自定义菜单(已完成接口:创建菜单)
+        #region 自定义菜单(已完成接口:创建菜单、查询菜单、删除菜单)
         /// <summary>
         /// 创建自定义菜单
         /// </summary>
@@ -120,6 +120,40 @@ namespace WeiXin.Hepler.WeChatHelper
                 return "响应出现问题";
             }
         }
+
+        /// <summary>
+        /// 菜单查询
+        /// </summary>
+        /// <returns></returns>
+        public static string GetMenu()
+        {
+            string getmeun_url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/get?access_token={0}",
+                GetAccessToken());
+            var result = http.GetRequestResponseStr(getmeun_url);
+            return result;
+        }
+
+        /// <summary>
+        /// 删除菜单,请注意，删除菜单时，调用此接口会删除默认菜单及全部个性化菜单。
+        /// </summary>
+        /// <returns></returns>
+        public static string DeleteMenu()
+        {
+            string delete_url = string.Format("https://api.weixin.qq.com/cgi-bin/menu/delete?access_token={0}",
+                GetAccessToken());
+            var result = http.GetRequestResponseObject<SimpleResponseModel>(delete_url);
+            if(result != null)
+            {
+                return result.errmsg;
+            }
+            else
+            {
+                return "请求错误";
+            }
+        }
+
+
+
         #endregion
 
 

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
@@ -17,23 +17,39 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("应用程序名称", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("关于", "About", "Home")</li>
-                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
-                </ul>
+                @Html.ActionLink("测试号辅助网站", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 应用程序</p>
-        </footer>
+        <!--创建菜单-->
+        <div style="border:solid 1px black;border-radius:8px;width:21%;float:left;height:120px">
+            <small>创建菜单:</small>
+            <form action="@Url.Action("Index","WeChat")" method="get">
+                <table>
+                    <tr>
+                        <td>菜单名称：</td>
+                        <td><input type="text" name="menuName" id="menuName" class="input-medium search-query" /></td>
+                    </tr>
+                    <tr>
+                        <td>链接地址：</td>
+                        <td><input type="text" name="url" id="url" /></td>
+                    </tr>
+                    <tr><td align="center" colspan="2"><input type="submit" value="创建" class="btn btn-large btn-block btn-primary" /></td></tr>
+                </table>
+            </form>
+        </div>
+        <!--删除菜单-->
+        <div style="border:solid 1px black;border-radius:8px;width:21%;float:left;height:120px">
+            <small>删除菜单:</small>
+            <div>
+                <small>注意:删除菜单是删除所有的菜单项</small>
+                <br />
+                <a href="@Url.Action("delete","wechat")" class="btn btn-primary btn-large btn-block btn-primary">删除</a>
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
